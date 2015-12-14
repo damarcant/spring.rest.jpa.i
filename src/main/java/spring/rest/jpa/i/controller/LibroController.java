@@ -3,8 +3,7 @@ package spring.rest.jpa.i.controller;
 import java.net.URI;
 import java.util.List;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,11 +22,10 @@ import spring.rest.jpa.i.facade.LibroFacade;
 public class LibroController {
 
  
-	@Inject
+	@Autowired
 	private LibroFacade libroFacade;
 	 
 	@RequestMapping(method = RequestMethod.GET)	 
-	@ResponseStatus(HttpStatus.OK) 
 	public List<Libro> findAll() {		
 		return libroFacade.findAll();
 	}
@@ -39,13 +36,12 @@ public class LibroController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json")
-	@ResponseStatus(HttpStatus.OK) 
-	public Libro update(@RequestBody Libro user, @PathVariable(value = "id") Integer id) { 
-		return libroFacade.update(user);	 
+	public Libro update(@RequestBody Libro libro, @PathVariable(value = "id") Integer id) {
+		libro.setId(id);
+		return libroFacade.update(libro);	 
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Libro> save(@RequestBody Libro entity)   {
 		
 			entity.setId(null);
@@ -65,7 +61,6 @@ public class LibroController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.OK)  
 	public void delete(@PathVariable(value = "id") Integer id) {			 
 		libroFacade.delete(id);		 
 	}
