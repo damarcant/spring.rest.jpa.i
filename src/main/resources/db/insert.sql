@@ -1,3 +1,6 @@
-INSERT INTO libros (titulo, anio_publicacion) VALUES ('Título 1', 1990);
-INSERT INTO libros (titulo, anio_publicacion) VALUES ('Título 2', 2000);
+INSERT INTO libros (titulo, anio_publicacion) VALUES ('El Pampinoplas', 1979);
+INSERT INTO libros (titulo, anio_publicacion) VALUES ('Los Batautos hacen batautadas', 1981);
+INSERT INTO libros (titulo, anio_publicacion) VALUES ('Zalacaín el aventurero', 1908);
+
+
  

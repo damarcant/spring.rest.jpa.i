@@ -20,7 +20,6 @@ import spring.rest.jpa.i.facade.LibroFacade;
 @RestController("libroController.v1")
 @RequestMapping("libros")
 public class LibroController {
-
  
 	@Autowired
 	private LibroFacade libroFacade;
@@ -64,6 +63,5 @@ public class LibroController {
 	public void delete(@PathVariable(value = "id") Integer id) {			 
 		libroFacade.delete(id);		 
 	}
-	 
  
 }
