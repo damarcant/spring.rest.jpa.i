@@ -41,20 +41,14 @@ public class LibroController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Libro> save(@RequestBody Libro entity)   {
-		
-			entity.setId(null);
-			Integer createdId = -1;
-			
-			createdId = libroFacade.save(entity);
-			if (createdId != null) {		 
-				entity.setId(createdId);  
-			}
+	public ResponseEntity<Libro> save(@RequestBody Libro libro)   {
+			 
+		libro = libroFacade.save(libro);
 			
 			HttpHeaders headers = new HttpHeaders();
-			URI locationUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/").path(String.valueOf(entity.getId())).build().toUri();
+			URI locationUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/").path(String.valueOf(libro.getId())).build().toUri();
 			headers.setLocation(locationUri);	 
-			ResponseEntity<Libro> responseEntity = new ResponseEntity<Libro>(entity, headers, HttpStatus.CREATED);
+			ResponseEntity<Libro> responseEntity = new ResponseEntity<Libro>(libro, headers, HttpStatus.CREATED);
 		
 			return responseEntity;
 	}

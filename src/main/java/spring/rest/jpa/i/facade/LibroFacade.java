@@ -27,10 +27,9 @@ public class LibroFacade {
 		return libroJpaRepository.save(libro);
 	}
 
-	public Integer save(Libro entity) {
-		
-		Libro l = libroJpaRepository.save(entity);		
-		return l.getId();
+	public Libro save(Libro entity) {
+		entity.setId(null);
+		return libroJpaRepository.save(entity); 
 	}
 
 	public void delete(Integer id) {
