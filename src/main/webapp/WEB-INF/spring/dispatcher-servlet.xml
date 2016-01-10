@@ -23,12 +23,7 @@
 	<!-- Transacciones mediante anotaciones -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
-	<mvc:annotation-driven >
-		<mvc:argument-resolvers>
-			<!-- Necesario para gestionar los parámetros de entrada de tipo Page en paginación -->
-	        <bean class="org.springframework.data.web.PageableHandlerMethodArgumentResolver" />
-	    </mvc:argument-resolvers>
-    </mvc:annotation-driven >
+	<mvc:annotation-driven /> 
 	 
 	<!-- Resolver las vistas de los controladores -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
