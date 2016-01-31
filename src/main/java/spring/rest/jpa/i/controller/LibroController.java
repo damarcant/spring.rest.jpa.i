@@ -45,12 +45,12 @@ public class LibroController {
 			 
 		libro = libroFacade.save(libro);
 			
-			HttpHeaders headers = new HttpHeaders();
-			URI locationUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/").path(String.valueOf(libro.getId())).build().toUri();
-			headers.setLocation(locationUri);	 
-			ResponseEntity<Libro> responseEntity = new ResponseEntity<Libro>(libro, headers, HttpStatus.CREATED);
-		
-			return responseEntity;
+		HttpHeaders headers = new HttpHeaders();
+		URI locationUri = ServletUriComponentsBuilder.fromCurrentRequest().path("/").path(String.valueOf(libro.getId())).build().toUri();
+		headers.setLocation(locationUri);	 
+		ResponseEntity<Libro> responseEntity = new ResponseEntity<Libro>(libro, headers, HttpStatus.CREATED);
+	
+		return responseEntity;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
