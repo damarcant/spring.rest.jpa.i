@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import spring.rest.jpa.i.bean.Libro;
 import spring.rest.jpa.i.facade.LibroFacade;
 
-@RestController("libroController.v1")
+@RestController
 @RequestMapping("libros")
 public class LibroController {
  
